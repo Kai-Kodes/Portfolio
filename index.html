@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Cipher | Portfolio</title>
+    <style>
+        /* Natural, Earthy CSS Variables */
+        :root {
+            --bg-color: #faf8f5;        /* Warm off-white */
+            --text-color: #2c3531;      /* Deep slate/greenish black */
+            --accent-color: #5b7c65;    /* Muted sage green */
+            --accent-hover: #4a6652;    /* Darker sage for hover */
+            --card-bg: #f0ebe1;         /* Soft beige */
+            --border-color: #e0d8c8;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Hero Section (Side-by-Side Layout) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 5% 3rem;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            letter-spacing: 1px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            color: #555;
+            font-size: 1.05rem;
+            max-width: 90%;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            object-fit: cover;
+        }
+
+        /* Tab Navigation Bar */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem 5%;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 30px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-area {
+            flex: 1;
+            padding: 1rem 5% 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Centers the Coming Soon text */
+            align-items: center;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+            width: 100%;
+            text-align: center;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Coming Soon Text Styling */
+        .coming-soon {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: rgba(44, 53, 49, 0.15); /* Very faint text */
+            letter-spacing: 6px;
+            padding: 4rem 0;
+            user-select: none; /* Prevents user from highlighting it to keep the illusion */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--text-color);
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 3rem;
+            }
+            .hero-text p {
+                margin: 0 auto;
+            }
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            .coming-soon {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Team Cipher</h1>
+            <h3>Founded by Nikhil Gupta & Nikhil Rawat</h3>
+            <p>We build thoughtful digital experiences, robust platforms, and practical tools to solve real-world problems.</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Nikhil Gupta and Nikhil Rawat">
+        </div>
+    </section>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="openTab('services', this)">Services We Offer</button>
+        <button class="tab-btn" onclick="openTab('templates', this)">Birthday Templates</button>
+        <button class="tab-btn" onclick="openTab('projects', this)">Other Projects</button>
+    </div>
+
+    <div class="content-area">
+        
+        <div id="services" class="tab-content active">
+            <div class="coming-soon">COMING SOON</div>
+        </div>
+
+        <div id="templates" class="tab-content">
+            <div class="coming-soon">COMING SOON</div>
+        </div>
+
+        <div id="projects" class="tab-content">
+            <div class="coming-soon">COMING SOON</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/your_handle" target="_blank">Instagram</a> • 
+            <a href="mailto:teamcipher@gmail.com">Gmail</a>
+        </div>
+        <p style="font-size: 0.9rem; color: #777;">&copy; 2026 Team Cipher. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openTab(tabName, clickedButton) {
+            let contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            let buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            clickedButton.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
