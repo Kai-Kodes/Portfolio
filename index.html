@@ -32,7 +32,7 @@
             min-height: 100vh;
         }
 
-        /* Hero Section (Side-by-Side Layout) */
+        /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
@@ -121,16 +121,12 @@
             max-width: 1100px;
             margin: 0 auto;
             width: 100%;
-            display: flex;
-            justify-content: center; /* Centers the Coming Soon text */
-            align-items: center;
         }
 
         .tab-content {
             display: none;
             animation: fadeIn 0.4s ease-in-out;
             width: 100%;
-            text-align: center;
         }
 
         .tab-content.active {
@@ -142,14 +138,52 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Grid & Card Layout for Templates */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.2s;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+            border-color: var(--accent-color);
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 4/3; /* Keeps all images a uniform shape */
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
         /* Coming Soon Text Styling */
         .coming-soon {
             font-size: 2.5rem;
             font-weight: bold;
-            color: rgba(44, 53, 49, 0.15); /* Very faint text */
+            color: rgba(44, 53, 49, 0.15); 
             letter-spacing: 6px;
-            padding: 4rem 0;
-            user-select: none; /* Prevents user from highlighting it to keep the illusion */
+            padding: 6rem 0;
+            text-align: center;
+            user-select: none; 
         }
 
         /* Footer */
@@ -178,7 +212,7 @@
             color: var(--text-color);
         }
 
-        /* Responsive Design for Mobile */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
@@ -193,6 +227,7 @@
             }
             .coming-soon {
                 font-size: 1.8rem;
+                padding: 4rem 0;
             }
         }
     </style>
@@ -223,7 +258,32 @@
         </div>
 
         <div id="templates" class="tab-content">
-            <div class="coming-soon">COMING SOON</div>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de3c9de59f9e?auto=format&fit=crop&w=400&q=80" alt="Template 1">
+                    <h4>Template 1</h4>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=400&q=80" alt="Template 2">
+                    <h4>Template 2</h4>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=400&q=80" alt="Template 3">
+                    <h4>Template 3</h4>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 4">
+                    <h4>Template 4</h4>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 5">
+                    <h4>Template 5</h4>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 6">
+                    <h4>Template 6</h4>
+                </div>
+            </div>
         </div>
 
         <div id="projects" class="tab-content">
