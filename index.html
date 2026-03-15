@@ -10,7 +10,6 @@
             --bg-color: #faf8f5;        /* Warm off-white */
             --text-color: #2c3531;      /* Deep slate/greenish black */
             --accent-color: #5b7c65;    /* Muted sage green */
-            --accent-hover: #4a6652;    /* Darker sage for hover */
             --card-bg: #f0ebe1;         /* Soft beige */
             --border-color: #e0d8c8;
         }
@@ -55,11 +54,37 @@
             letter-spacing: 1px;
         }
 
-        .hero-text h3 {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
+        /* Typographic Name Lockup */
+        .founders-lockup {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            user-select: none;
+        }
+
+        .first-name {
+            font-size: 3.5rem;
+            line-height: 0.8;
+            font-weight: 400;
+            /* This stretches "Nikhil" slightly to match the stacked height */
+            transform: scaleY(1.15); 
+            display: inline-block;
+            transform-origin: bottom;
+        }
+
+        .last-names {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .last-names span {
+            font-size: 1.35rem;
+            line-height: 1.1;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         .hero-text p {
@@ -138,41 +163,82 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Grid & Card Layout for Templates */
+        /* Grid Layout for New Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
+        /* New Material UI Card Style */
         .card {
-            background-color: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.2s;
+            background-color: #ffffff; /* Pure white */
+            border-radius: 12px;
+            overflow: hidden; /* Clips image corners */
+            text-align: left;
             border: 1px solid var(--border-color);
-            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-            border-color: var(--accent-color);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
         }
 
         .card img {
             width: 100%;
-            aspect-ratio: 4/3; /* Keeps all images a uniform shape */
+            height: 200px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1rem;
         }
 
-        .card h4 {
-            font-size: 1.2rem;
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-content h4 {
+            font-size: 1.6rem;
             color: var(--text-color);
-            font-family: Georgia, 'Times New Roman', serif;
+            margin-bottom: 0.8rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 500;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex: 1; /* Pushes the button to the bottom */
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .visit-btn {
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .visit-btn:hover {
+            background-color: #111;
         }
 
         /* Coming Soon Text Styling */
@@ -225,6 +291,18 @@
             .hero-text h1 {
                 font-size: 3rem;
             }
+            .founders-lockup {
+                justify-content: center;
+            }
+            .first-name {
+                font-size: 2.8rem;
+            }
+            .last-names span {
+                font-size: 1.1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr; /* Stack cards on mobile */
+            }
             .coming-soon {
                 font-size: 1.8rem;
                 padding: 4rem 0;
@@ -237,7 +315,15 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Team Cipher</h1>
-            <h3>Founded by Nikhil Gupta & Nikhil Rawat</h3>
+            
+            <div class="founders-lockup">
+                <span class="first-name">Nikhil</span>
+                <div class="last-names">
+                    <span>Gupta</span>
+                    <span>Rawat</span>
+                </div>
+            </div>
+
             <p>We build thoughtful digital experiences, robust platforms, and practical tools to solve real-world problems.</p>
         </div>
         <div class="hero-image">
@@ -260,28 +346,64 @@
         <div id="templates" class="tab-content">
             <div class="grid">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de3c9de59f9e?auto=format&fit=crop&w=400&q=80" alt="Template 1">
-                    <h4>Template 1</h4>
+                    <img src="https://images.unsplash.com/photo-1530103862676-de3c9de59f9e?auto=format&fit=crop&w=600&q=80" alt="Template 1">
+                    <div class="card-content">
+                        <h4>Template 1</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=400&q=80" alt="Template 2">
-                    <h4>Template 2</h4>
+                    <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=600&q=80" alt="Template 2">
+                    <div class="card-content">
+                        <h4>Template 2</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=400&q=80" alt="Template 3">
-                    <h4>Template 3</h4>
+                    <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=600&q=80" alt="Template 3">
+                    <div class="card-content">
+                        <h4>Template 3</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 4">
-                    <h4>Template 4</h4>
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=600&q=80" alt="Template 4">
+                    <div class="card-content">
+                        <h4>Template 4</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 5">
-                    <h4>Template 5</h4>
+                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80" alt="Template 5">
+                    <div class="card-content">
+                        <h4>Template 5</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=80" alt="Template 6">
-                    <h4>Template 6</h4>
+                    <img src="https://images.unsplash.com/photo-1517404206475-8f8631f37229?auto=format&fit=crop&w=600&q=80" alt="Template 6">
+                    <div class="card-content">
+                        <h4>Template 6</h4>
+                        <p>More information about the topic will come here within two to three lines.</p>
+                        <div class="card-actions">
+                            <a href="#" class="visit-btn">Visit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
